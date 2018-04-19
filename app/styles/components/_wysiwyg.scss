@@ -1,0 +1,135 @@
+.ta-toolbar{
+	.btn-group {
+		margin-bottom: 5px;
+	}
+
+	.btn-tool, .btn{
+		line-height: 34px;
+		height: 36px;
+		padding: 0;
+		min-height: 0;
+		min-width: 36px;
+	}
+
+	.btn-tool{
+		background-color: #fff;
+		border: 1px solid #ccc;
+
+		&:hover, &:active{
+			background-color: #ebebeb;
+		}
+
+		&.active{
+			z-index: 1;
+			color: #333;
+			background-color: #ebebeb;
+			border-color: #adadad;
+		}
+
+		i{
+			font-size: 24px;
+			line-height: 34px;
+			margin: 0 3px;
+		}
+	}
+
+	.dropdown{
+		.dropdown-menu{
+			min-width: 0;
+			width: 200px;
+
+			li, .btn{
+				height: 32px;
+				line-height: 32px;
+				font-size: 14px;
+			}
+
+			.selected{
+				background-color: $active-input-color;
+			}
+		}
+	}
+}
+
+.ta-text{
+	ul, ol{
+		list-style-position: outside;
+		padding-left: 20px;
+	}
+
+	ul{
+		list-style-type: disc;
+	}
+
+	ol{
+		list-style-type: decimal;
+	}
+
+	[contenteditable]{
+		outline: 0;
+	}
+}
+
+.tinyeditor .sizer{
+	height: 150px;
+	min-height: 100px;
+}
+
+.ta-scroll-window.form-control{
+	padding: 1px + 2px;
+	border-radius: 0;
+	box-shadow: none;
+	border-color: $border-color;
+	position: static;
+}
+
+.ta-root.focussed > .ta-scroll-window.form-control{
+	position: static;
+	box-shadow: none;
+	border-color: $active-input-color;
+	border-radius: 0;
+	border-width: 2px;
+	padding: 2px;
+}
+
+.fa{
+	@extend .icon;
+	&.fa-align-left{
+		@extend .icon-format-align-left;
+	}
+	&.fa-align-right{
+		@extend .icon-format-align-right;
+	}
+	&.fa-align-justify{
+		@extend .icon-format-align-justify;
+	}
+	&.fa-trash-o{
+		@extend .icon-delete;
+	}
+	&.fa-edit{
+		@extend .icon-mode-edit;
+	}
+	&.fa-unlink{
+		@extend .icon-delete;
+	}
+}
+
+.popover-content{
+	.btn{
+		padding: 0 3px;
+		height: 36px;
+		line-height: 36px;
+
+		&.active{
+			background-color: $active-input-color;
+		}
+
+		i{
+			line-height: 36px;
+		}
+	}
+}
+
+.btn-wysiwyg{
+	padding: 0;
+}

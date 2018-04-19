@@ -1,0 +1,82 @@
+<div class="related-files">
+	<div class="drop-area dropper mtb10" nv-file-drop nv-file-over uploader="fileUploader" ng-if="!relatedFilesConfig || relatedFilesConfig.upload">
+		<label class="a file-upload dropper-label" ng-class="{'uploading': fileUploader.queue.length && fileUploader.isUploading, 'ishtml5': fileUploader.isHTML5}">
+			<span class="select-file-text" translate ng-if="userPermissions.edit">
+				<i class="icon-add mr10"></i><span>{{relatedFilesConfig.upload || 'Upload files'}}</span>
+			</span>
+			<input nv-file-select multiple uploader="fileUploader" type="file">
+		</label>
+	</div>
+
+	<button type="button" class="btn btn-clear wp100" ng-click="Upload.showFilesGallery(this)" ng-if="!relatedFilesConfig || relatedFilesConfig.select">
+		<i class="icon-attach-file"></i><span>{{relatedFilesConfig.select || 'Select files from gallery'}}</span>
+	</button>
+
+	<div m-input class="w-btn" label="{{relatedFilesConfig.link || 'Image URL, Youtube and Vimeo URL / embed code'}}" ng-if="!relatedFilesConfig || relatedFilesConfig.link">
+		<input type="text" ng-model="module.fileUrl" ng-disabled="!userPermissions.edit" ng-keydown="Upload.addFileFromInput(this, relatedFilesConfig.linkFilter, $event)">
+		<button type="button" class="btn btn-clear icon-add" title="Add" ng-click="Upload.addFileFromInput(this, relatedFilesConfig.linkFilter)"></button>
+	</div>
+
+	<table class="upload-queue-table" ng-class="{'uploading': fileUploader.isUploading}" ng-if="fileUploader.queue.length">
+		<tr>
+			<th>Name</th>
+			<th ng-if="fileUploader.isHTML5">Size</th>
+			<th ng-if="fileUploader.isHTML5">Progress</th>
+			<th>Status</th>
+		</tr>
+		<tr ng-repeat="item in fileUploader.queue | orderBy:'-'">
+			<td>
+				<strong>{{item.file.name}}</strong>
+			</td>
+			<td ng-if="fileUploader.isHTML5" nowrap>{{item.file.size/1024/1024|number:2}} MB</td>
+			<td ng-if="fileUploader.isHTML5">
+				<div class="pos-rel">
+					<ins class="upload-progress">
+						<span ng-style="{'width': item.progress + '%'}"></span>
+					</ins>
+				</div>
+			</td>
+			<td>
+				<i ng-class="{'icon-done status-success': item.isSuccess, 'icon-block status-warning': item.isCancel, 'icon-close status-error': item.errors}"></i>
+			</td>
+		</tr>
+	</table>
+
+	<div ng-if="input.files.length">
+		<div ng-repeat="file in input.files | orderBy:'_order'" class="file-entity">
+			<button type="button" class="btn btn-clear more" ng-class="showMore ? 'icon-chevron-down' : 'icon-chevron-right'" ng-click="showMore = !showMore"></button>
+			<button type="button" class="btn btn-clear icon-close closer" ng-click="Data.showDeleteFileModal(this, file, $index)"></button>
+
+			<div class="title text-overflow">
+				<div ng-click="showMore = !showMore"><i class="icon-attach-file mr5"></i><span class="text-overflow ib wp100">{{file.title | emptySign}}</span></div>
+			</div>
+
+			<div ng-if="showMore">
+				<div class="properties-field">
+					<span translate>Document Link</span>
+					<s><a ng-href="{{file.source}}" class="text-overflow ib wp100" target="_blank">{{file.source}}</a></s>
+				</div>
+
+				<div m-input class="form-item" label="Title">
+					<input type="text" ng-model="file.title" ng-disabled="!userPermissions.edit">
+				</div>
+
+				<div m-input label="Document Type">
+					<input type="text" ng-model="file.documentType" ng-disabled="!userPermissions.edit">
+				</div>
+
+				<div m-input label="Image Alt Tag">
+					<input type="text" ng-model="file.altTag" ng-disabled="!userPermissions.edit">
+				</div>
+
+				<div m-input class="form-item" max-height="140" label="Brief Description">
+					<textarea ng-model="file.description" ng-disabled="!userPermissions.edit" maxlength="10000"></textarea>
+				</div>
+
+				<div m-input class="form-item" label="Order">
+					<input type="number" ng-min="0" ng-max="999999" maxlength="6" ng-model="file.order" ng-disabled="!userPermissions.edit">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

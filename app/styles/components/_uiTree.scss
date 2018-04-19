@@ -1,0 +1,139 @@
+[ui-tree], .angular-ui-tree-empty{
+	min-height: 50px;
+}
+
+
+[ui-tree-nodes]{
+	&.row{
+		margin: 0 -3px;
+	}
+	.col{
+		padding: 3px;
+	}
+}
+
+
+[ui-tree-node]{
+	overflow: hidden;
+	background-color: lighten($panel-bg, 4%);
+	border: 1px solid $border-color;
+
+	&.target-node{
+		margin-top: 8px;
+		padding-left: 32px;
+	}
+
+	[ui-tree-nodes]{
+		min-height: 50px;
+		padding: 7px 5px 7px 0;
+
+		&.slim-nodes{
+			min-height: 20px;
+			padding: 3px 5px 7px 0;
+		}
+	}
+
+	.drag-hint{
+		height: 80px;
+	}
+
+	.options-field, .properties-field{
+		line-height: 1.5;
+	}
+
+	.closer{
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 30px;
+		text-align: center;
+		padding-top: 15px;
+	}
+}
+
+
+.node-options{
+	background-color: $page-bg;
+	margin: 0 5px 5px 0;
+}
+
+
+.node-cont{
+	padding: 15px 10px 15px 15px;
+
+	&.w-closer{
+		padding-right: 30px;
+	}
+}
+
+
+[ui-tree-handle]{
+	cursor: move;
+}
+
+i.ui-tree-handle{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	line-height: 50px;
+	font-size: 20px;
+	text-align: center;
+	width: 36px;
+}
+
+
+.angular-ui-tree-drag{
+	[ui-tree-node]{
+		width: 100%;
+	}
+}
+
+
+.angular-ui-tree-placeholder{
+	display: block !important;
+	border: 1px dashed $border-color;
+	margin: 10px 0 0;
+	background-color: rgba($active-input-color, .5);
+}
+
+
+.form-builder{
+	.source-elements{
+		.angular-ui-tree-placeholder{
+			display: none !important;
+		}
+	}
+
+	.target-elements{
+		.angular-ui-tree-placeholder{
+			width: 100% !important;
+		}
+	}
+}
+
+.node-item-preview{
+	opacity: 0.6;
+}
+
+
+.options-list{
+	[ui-tree-node]{
+		padding: 5px;
+		border-bottom: none;
+		overflow: hidden;
+
+		&:last-child{
+			border-bottom: 1px solid $border-color;
+		}
+
+		.closer{
+			padding-top: 10px;
+		}
+	}
+
+	.angular-ui-tree-placeholder{
+		margin: 1px 0 0;
+	}
+}

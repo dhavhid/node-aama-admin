@@ -1,0 +1,45 @@
+tags-input{
+	.tags{
+		transition: border-color 150ms ease;
+		border: 0;
+		border-bottom: 1px solid $border-color;
+		box-shadow: 0 0 0;
+		padding-bottom: 4px;
+
+		&:focus{
+			outline: 0;
+			box-shadow: 0 0 0;
+		}
+
+		&.focused{
+			border: 0;
+			box-shadow: 0 0 0;
+			border-bottom: 2px solid $active-input-color;
+			padding-bottom: 3px;
+		}
+
+		.tag-item{
+			@include border-radius(3px);
+			border: 0;
+			padding: 0 0 0 10px;
+			background: $panel-bg;
+			//color: $contrast-color;
+
+			.remove-button{
+				@extend .icon;
+				@extend .icon-close;
+				height: 100%;
+				padding: 2px 5px 0;
+				background-color: darken($panel-bg, 5%);
+				display: inline-block;
+				font-size: 20px;
+				@include border-radius(0 3px 3px 0);
+
+				&:active{
+					color: $active-input-color;
+				}
+				//color: $contrast-color;
+			}
+		}
+	}
+}

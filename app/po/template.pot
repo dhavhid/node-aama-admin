@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: app/langs.html:13
+msgid "A geocoding request could not be processed due to a server error. The request may succeed if you try again"
+msgstr ""
+
+#: app/langs.html:4
+msgid "Code"
+msgstr ""
+
+#: app/langs.html:22
+msgid "dropdown_checkbox"
+msgstr ""
+
+#: app/langs.html:26
+msgid "dropdown_group"
+msgstr ""
+
+#: app/langs.html:24
+msgid "dropdown_info"
+msgstr ""
+
+#: app/langs.html:21
+msgid "dropdown_radio"
+msgstr ""
+
+#: app/langs.html:23
+msgid "dropdown_select"
+msgstr ""
+
+#: app/langs.html:25
+msgid "dropdown_terms"
+msgstr ""
+
+#: app/langs.html:19
+msgid "dropdown_text"
+msgstr ""
+
+#: app/langs.html:20
+msgid "dropdown_textarea"
+msgstr ""
+
+#: app/langs.html:9
+msgid "Geocoder Request was invalid"
+msgstr ""
+
+#: app/langs.html:15
+msgid "google map not loaded"
+msgstr ""
+
+#: app/langs.html:16
+msgid "google map not loaded, promise rejected"
+msgstr ""
+
+#: app/langs.html:18
+msgid "Image loading error"
+msgstr ""
+
+#: app/langs.html:17
+msgid "Invalid location parameter"
+msgstr ""
+
+#: app/langs.html:7
+msgid "Loading"
+msgstr ""
+
+#: app/langs.html:6
+msgid "No location info"
+msgstr ""
+
+#: app/langs.html:14
+msgid "No result was found for this Geocoder Request"
+msgstr ""
+
+#: app/langs.html:5
+msgid "Please connect to the internet"
+msgstr ""
+
+#: app/langs.html:3
+msgid "Request error"
+msgstr ""
+
+#: app/langs.html:11
+msgid "The application has gone over the requests limit in too short a period of time"
+msgstr ""
+
+#: app/langs.html:12
+msgid "The application is not allowed to use the geocoder"
+msgstr ""
+
+#: app/langs.html:10
+msgid "The response contains a valid Geocoder Response"
+msgstr ""
+
+#: app/langs.html:8
+msgid "There was a problem contacting the Google servers"
+msgstr ""

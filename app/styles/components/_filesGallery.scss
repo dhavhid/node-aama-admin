@@ -1,0 +1,59 @@
+.files-gallery{
+	.file-entry{
+		padding: 0;
+
+		&:hover, &:active{
+			background-color: $active-input-color;
+		}
+	}
+
+	.file-preview{
+		overflow: hidden;
+		margin: 5px;
+		border: 1px solid $border-color;
+		text-align: center;
+		height: 130px;
+
+		.file-icon{
+			font-size: 80px;
+		}
+
+		@media (max-width: 499px) {
+			.file-icon{
+				font-size: 70px;
+			}
+		}
+
+		@media (min-width: 500px) {
+			height: 130px;
+		}
+
+		@media (min-width: 600px) {
+			height: 140px;
+		}
+
+		@media (min-width: 800px) {
+			height: 150px;
+
+			.file-icon{
+				font-size: 100px;
+			}
+		}
+	}
+
+	.file-desc{
+		position: relative;
+
+		.selector{
+			font-size: 16px;
+			color: $main-text-color;
+			position: absolute;
+			right: 5px;
+			top: 0;
+
+			&.active{
+				color: $active-input-alt-color;
+			}
+		}
+	}
+}

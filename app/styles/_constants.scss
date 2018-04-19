@@ -1,0 +1,56 @@
+$page-bg: #fff;
+$base-text-color: #60605c;
+$main-font-size: 14px;
+$error-bg: rgb(200,0,0);
+$warning-bg: #FFA10E;
+$info-bg: rgb(0,180,200);
+$success-bg: rgb(0,200,40);
+$notify-color: #fff;
+$inactive-page-bg: #e6e7e8;
+
+$active-input-color: #b7db53;
+$active-input-hover-color: #dcf478;
+$active-input-alt-color: #98c2e5;
+$inactive-input-color: lighten($base-text-color,30%);
+$border-color: #E4E4E1;
+$error-color: #A82109;
+
+$main-text-color: rgba($base-text-color,1);
+$hl-text-color: #ffd740;
+$muted-text-color: rgba($base-text-color,0.7);
+$placeholder-color: rgba($base-text-color,0.5);
+$contrast-color: #fff;
+$link-color: rgba($base-text-color,0.9);
+$header-color: rgba($base-text-color,0.9);
+
+$scrollbar-color: #777;
+
+$header-bg: #76A0C4;
+$header-dark-bg: #5F798E;
+$input-bg: #fff;
+$panel-bg: #F1F1EF;
+$list-bg: #76A0C4;
+$list-active-bg: #708CA7;
+
+$max-width: 1250px;
+
+$form-item-margins: 10px 0 32px;
+$form-header-margins: 10px 0 10px;
+$filters-panel-height: 80px;
+$filters-panel-line-height: 48px;
+$list-item-height: 56px;
+$list-img-size: 40px;
+$input-height: 48px;
+$input-font-size: 18px;
+$label-font-size: 16px;
+
+$header-height-sm: 64px;
+$header-height-xs: 48px;
+$header-img-height-sm: 160px;
+$header-img-height-xs: 80px;
+$footer-height-sm: 90px;
+$footer-height-xs: 140px;
+$left-list-width-sm: 340px;
+$left-list-width-xs: 270px;
+$right-list-width-sm: 340px;
+$right-list-width-xs: 270px;

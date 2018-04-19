@@ -1,0 +1,171 @@
+<!doctype html>
+<html ng-controller="MainCtrl" ng-class="{'has-left-list': LeftList.use, 'show-left-list': LeftList.visible, 'show-right-list': RightList.visible, 'has-header-img': global.emptyHeader}">
+	<head>
+		<base href="/">
+		<script>
+			(function(){
+				window.globalVars = {
+					appName: 'aama',
+					html5mode: true
+				};
+
+				document.querySelector('base').href = window.globalVars.html5mode ? '/' : '';
+			})();
+
+			window.onload = function(){
+				window.globalVars.isCordova = typeof cordova !== 'undefined' || typeof phonegap !== 'undefined';
+				function bootstrap(){
+					angular.bootstrap(document, [window.globalVars.appName]);
+				};
+				window.globalVars.isCordova ? document.addEventListener('deviceready', bootstrap, false) : bootstrap();
+			};
+		</script>
+		<meta name="fragment" content="!">
+		<meta http-equiv="Content-Security-Policy" content="">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<meta charset="utf-8">
+		<title>AAMA</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+		<!-- build:css styles/vendor.css -->
+		<!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/bootstrap-additions/dist/bootstrap-additions.css" />
+		<link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
+		<link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+		<link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+		<link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+		<link rel="stylesheet" href="bower_components/chosen/chosen.css" />
+		<!-- endbower -->
+		<link rel="stylesheet" href="scripts/vendor/textAngular/textAngular.css" />
+		<!--link rel="stylesheet" href="styles/vendor/wysiwyg.css" /-->
+		<link rel="stylesheet" href="styles/vendor/bootstrap.css">
+		<link rel="stylesheet" href="styles/vendor/icomoon.css">
+		<!-- endbuild -->
+		<!-- build:css({.tmp,app}) styles/main.css -->
+		<link rel="stylesheet" href="styles/main.css">
+		<!-- endbuild -->
+	</head>
+	<body ng-class="{'has-left-list': LeftList.use, 'show-left-list': LeftList.visible, 'inactive-bg': global.inactivePageBg}">
+		<!--[if lt IE 9]>
+			<div class="browsehappy bg-warning text-center fs32 p20">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</div>
+		<![endif]-->
+
+		<div class="global-loader ng-hide" ng-show="loader.global"><div><i class="icon-loading2 spin"></i></div></div>
+
+		<div id="header" ng-include="'views/components/header.html'"></div>
+
+		<div class="container-fluid-">
+			<div ui-view="list" autoscroll="false" class="side-list left-list window-height {{LeftList.listClass}} {{LeftList.loader ? 'loading' : ''}}" ng-class="{'show-left-list': LeftList.visible, 'inactive': LeftList.inactive}" ng-if="LeftList.use"></div>
+			<div ui-view id="page-view" autoscroll="true" class="view-change anim-flip main-view"></div>
+			<div ng-include="'views/list/rightList.html'" class="side-list right-list line2 window-height invisible {{RightList.listClass}}" ng-class="{'inactive': RightList.inactive, 'loading': RightList.loader}" ng-style="{'visibility': RightList.visible ? 'visible' : 'hidden'}" ng-if="RightList.visible"></div>
+		</div>
+
+		<div ng-include="'views/components/notify.html'"></div>
+
+
+		<!-- build:js scripts/vendor.js -->
+		<!-- bower:js -->
+		<script src="bower_components/jquery/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+		<script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+		<script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+		<script src="bower_components/angular-swipe/dist/angular-swipe.js"></script>
+		<script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+		<script src="bower_components/angular-permission/dist/angular-permission.js"></script>
+		<script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+		<script src="bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+		<script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+		<script src="bower_components/pouchdb/dist/pouchdb.js"></script>
+		<script src="bower_components/angular-pouchdb/angular-pouchdb.js"></script>
+		<script src="bower_components/rangy/rangy-core.js"></script>
+		<script src="bower_components/rangy/rangy-classapplier.js"></script>
+		<script src="bower_components/rangy/rangy-highlighter.js"></script>
+		<script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+		<script src="bower_components/rangy/rangy-serializer.js"></script>
+		<script src="bower_components/rangy/rangy-textrange.js"></script>
+		<script src="bower_components/lodash/lodash.js"></script>
+		<script src="bower_components/moment/moment.js"></script>
+		<script src="bower_components/moment-range/dist/moment-range.js"></script>
+		<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+		<script src="bower_components/fastclick/lib/fastclick.js"></script>
+		<script src="bower_components/chosen/chosen.jquery.js"></script>
+		<script src="bower_components/angular-chosen-localytics/dist/angular-chosen.js"></script>
+		<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+		<!-- endbower -->
+		<script src="scripts/vendor/textAngular/textAngular-sanitize.js"></script>
+		<script src="scripts/vendor/textAngular/textAngularSetup.js"></script>
+		<script src="scripts/vendor/textAngular/textAngular.js"></script>
+		<script src="scripts/vendor/angular-ui-tree.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="scripts/app.js"></script>
+		<script src="scripts/routes.js"></script>
+		<script src="scripts/config.js"></script>
+		<script src="scripts/prototypes.js"></script>
+		<script src="scripts/translations.js"></script>
+		<script src="scripts/wysiwygConfig.js"></script>
+
+		<script src="scripts/runs/history.js"></script>
+		<script src="scripts/runs/langs.js"></script>
+		<script src="scripts/runs/log.js"></script>
+
+		<script src="scripts/directives/bgImg.js"></script>
+		<script src="scripts/directives/focus.js"></script>
+		<script src="scripts/directives/mInput.js"></script>
+		<script src="scripts/directives/switch.js"></script>
+		<script src="scripts/directives/thumb.js"></script>
+		<script src="scripts/directives/isolatedScroll.js"></script>
+		<script src="scripts/directives/gmap.js"></script>
+		<script src="scripts/directives/dropdownToggle.js"></script>
+		<script src="scripts/directives/scrollTop.js"></script>
+		<script src="scripts/directives/floatingActionBtns.js"></script>
+
+		<script src="scripts/filters/nl2br.js"></script>
+		<script src="scripts/filters/string.js"></script>
+		<script src="scripts/filters/emptySign.js"></script>
+		<script src="scripts/filters/textLoaded.js"></script>
+		<script src="scripts/filters/capitalize.js"></script>
+
+		<script src="scripts/services/api.js"></script>
+		<script src="scripts/services/storage.js"></script>
+		<script src="scripts/services/pouchDbDriver.js"></script>
+		<script src="scripts/services/localStorageDriver.js"></script>
+		<script src="scripts/services/auth.js"></script>
+		<script src="scripts/services/utils.js"></script>
+		<script src="scripts/services/imageParams.js"></script>
+		<script src="scripts/services/devData.js"></script>
+		<script src="scripts/services/sideList.js"></script>
+		<script src="scripts/services/leftList.js"></script>
+		<script src="scripts/services/rightList.js"></script>
+		<script src="scripts/services/upload.js"></script>
+		<script src="scripts/services/gmap.js"></script>
+		<script src="scripts/services/data.js"></script>
+		<script src="scripts/services/formBuilder.js"></script>
+		<script src="scripts/services/contents.js"></script>
+		<script src="scripts/services/modal.js"></script>
+
+		<script src="scripts/controllers/main.js"></script>
+		<script src="scripts/controllers/auth.js"></script>
+		<script src="scripts/controllers/users.js"></script>
+		<script src="scripts/controllers/forms.js"></script>
+		<script src="scripts/controllers/contents.js"></script>
+		<script src="scripts/controllers/pageOrder.js"></script>
+		<script src="scripts/controllers/uploadImage.js"></script>
+		<script src="scripts/controllers/categories.js"></script>
+		<script src="scripts/controllers/filesGallery.js"></script>
+		<script src="scripts/controllers/linksBuilder.js"></script>
+		<!-- endbuild -->
+
+		<script src="scripts/templates.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
+	</body>
+</html>

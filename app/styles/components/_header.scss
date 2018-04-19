@@ -1,0 +1,217 @@
+#header{
+	.list-header{
+		padding: 0 10px;
+		width: $left-list-width-sm;
+		height: $header-height-sm;
+		line-height: $header-height-sm;
+		background-color: $header-dark-bg;
+		float: left;
+	}
+
+	.user{
+		float: right;
+
+		img{
+			height: $header-height-sm * 0.6;
+			width: $header-height-sm * 0.6;
+			border-radius: 50%;
+		}
+
+		.username{
+			display: inline-block;
+			@include text-overflow;
+			max-width: 280px;
+			vertical-align: top;
+			margin-left: 10px;
+		}
+	}
+
+	a{
+		color: $contrast-color;
+	}
+
+	.navbar{
+		z-index: 1037;
+		min-height: 0;
+		height: $header-height-sm;
+		line-height: $header-height-sm;
+		background-color: $header-bg;
+		color: $contrast-color;
+		border: 0;
+		overflow: hidden;
+		//box-shadow: 0px 0px 2px 0px $header-bg;
+
+		*{
+			line-height: $header-height-sm;
+		}
+
+		.reqs-loader-logo{
+			position: absolute;
+			left: 10px;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			text-align: left;
+			font-size: $header-height-sm / 2;
+			z-index: 2000;
+			color: $contrast-color;
+		}
+
+		.btn{
+			opacity: 0.8;
+			transition-property: opacity;
+			height: $header-height-sm;
+
+			&:hover, &:active{
+				color: inherit;
+				opacity: 1;
+			}
+
+			&:focus{
+				color: inherit;
+			}
+		}
+
+		.logo{
+			position: relative;
+			margin-right: 10px;
+
+			img{
+				max-width: 100px;
+				max-height: 44px;
+			}
+		}
+
+		.menu-btn{
+			font-weight: normal;
+			text-transform: none;
+
+			span{
+				@include text-overflow;
+				max-width: 180px;
+				display: inline-block;
+				font-weight: bold;
+				font-size: $input-font-size;
+			}
+		}
+	}
+
+	.header-tabs{
+		float: left;
+		padding-left: 7%;
+
+		li{
+			float: left;
+			font-size: 14px;
+
+			a{
+				height: $header-height-sm;
+				border-bottom: 3px solid transparent;
+				opacity: 0.8;
+				padding: 0 10px;
+				text-transform: uppercase;
+				display: block;
+				transition-property: opacity,border;
+				transition-duration: 300ms;
+
+				&.active{
+					opacity: 1;
+					border-bottom-color: $contrast-color;
+				}
+
+				&:hover, &:active{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+.has-header-img{
+	#header{
+		.navbar{
+			height: $header-img-height-sm;
+			background-color: transparent;
+			//box-shadow: none;
+			background-image: url(../images/header-img-short.png);
+			background-size: auto 100%;
+			background-repeat: repeat-x;
+		}
+	}
+}
+
+
+@media (max-width: 767px) {
+	#header{
+		.list-header{
+			width: $left-list-width-xs;
+			height: $header-height-xs;
+			line-height: $header-height-xs;
+		}
+
+		.user{
+			img{
+				height: $header-height-xs * 0.6;
+				width: $header-height-xs * 0.6;
+			}
+		}
+
+		.navbar{
+			height: $header-height-xs;
+			line-height: $header-height-xs;
+
+			*{
+				line-height: $header-height-xs;
+			}
+
+			.btn{
+				height: $header-height-xs;
+			}
+
+			.logo{
+				img{
+					max-width: 60px;
+					max-height: 36px;
+				}
+			}
+
+			.menu-btn{
+				span{
+					max-width: 136px;
+					font-size: 16px;
+				}
+			}
+		}
+
+		.header-tabs{
+			li{
+				a{
+					height: $header-height-xs;
+				}
+			}
+		}
+	}
+
+	.has-header-img{
+		#header{
+			.navbar{
+				height: $header-img-height-xs;
+			}
+		}
+	}
+}
+
+@media (max-width: 599px) {
+	#header{
+		.list-header{
+			width: auto;
+			background-color: inherit;
+		}
+
+		.user{
+			.username{
+				display: none;
+			}
+		}
+	}
+}

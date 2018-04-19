@@ -1,0 +1,290 @@
+.slide-left-right > .ng-enter, .slide-left-right.ng-enter{
+	transition: all ease-in-out 250ms;
+	position: absolute;
+}
+.slide-left-right > .ng-enter, .slide-left-right.ng-enter {
+	/* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
+	left: 100%;
+}
+.slide-left-right > .ng-enter.ng-enter-active, .slide-left-right.ng-enter.ng-enter-active {
+	/* NEW content ACTIVELY sliding IN from the RIGHT */
+	left: 0;
+}
+
+
+.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter, .slide-left-right-ios7 > .ng-leave, .slide-left-right-ios7.ng-leave {
+	transition: all ease-in-out 250ms;
+	position: absolute;
+	top: 0;
+	right: -1px;
+	//bottom: 0;
+	min-height: 100%;
+	left: -1px;
+	width: auto;
+	border-right: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+	box-shadow: 0 0 15px -1px #000;
+}
+.slide-left-right-ios7 > .ng-leave, .slide-left-right-ios7.ng-leave{
+	//z-index: 1;
+}
+.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter {
+	/* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
+	transform: translate3d(100%, 0, 0);
+	visibility: hidden;
+}
+.slide-left-right-ios7 > .ng-enter.ng-enter-active, .slide-left-right-ios7.ng-enter.ng-enter-active {
+	/* NEW content ACTIVELY sliding IN from the RIGHT */
+	transform: translate3d(0, 0, 0);
+	visibility: visible;
+	z-index: 2;
+}
+.slide-left-right-ios7 > .ng-leave.ng-leave-active, .slide-left-right-ios7.ng-leave.ng-leave-active {
+	/* OLD content ACTIVELY sliding OUT to the LEFT */
+	transform: translate3d(-10%, 0, 0);
+	z-index: 1;
+}
+.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter, .slide-left-right-ios7.reverse > .ng-leave, .slide-left-right-ios7.reverse.ng-leave {
+	transition: all ease-in-out 250ms;
+	position: absolute;
+	top: 0;
+	right: -1px;
+	//bottom: 0;
+	min-height: 100%;
+	left: -1px;
+	width: auto;
+	border-right: 1px solid #aaa;
+	border-left: 1px solid #aaa;
+	box-shadow: 0 0 15px -1px #000;
+}
+.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter {
+	/* NEW content placed far LEFT BEFORE it slides IN from the LEFT */
+	transform: translate3d(-100%, 0, 0);
+}
+.slide-left-right-ios7.reverse > .ng-enter.ng-enter-active, .slide-left-right-ios7.reverse.ng-enter.ng-enter-active {
+	/* NEW content ACTIVELY sliding IN from the LEFT */
+	transform: translate3d(0, 0, 0);
+}
+.slide-left-right-ios7.reverse > .ng-leave.ng-leave-active, .slide-left-right-ios7.reverse.ng-leave.ng-leave-active {
+	/* OLD content ACTIVELY sliding OUT to the RIGHT */
+	transform: translate3d(15%, 0, 0);
+}
+
+
+.slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide.ng-enter, .slide.ng-leave {
+	transition: all 250ms ease;
+}
+.slide.ng-enter {
+	left: 100%;
+}
+.slide.ng-enter-active {
+	left: 0;
+}
+.slide.ng-leave {
+	left: 0;
+}
+.slide.ng-leave-active {
+	left: -100%;
+}
+
+
+.fade-in-out > .ng-enter, .fade-in-out.ng-enter{
+	transition: all ease-in-out 5250ms;
+}
+.fade-in-out > .ng-enter, .fade-in-out.ng-enter {
+	opacity: 0;
+}
+.fade-in-out > .ng-enter.ng-enter-active, .fade-in-out.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+
+
+.view-change {
+	&.ng-enter, &.ng-leave{
+		transition: all 350ms ease;
+		backface-visibility: hidden;
+		/*position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin-top: 140px;*/
+	}
+
+	&.ng-enter{
+		z-index: 2;
+		opacity: 0.1;
+
+		&.ng-enter-active {
+			opacity: 1;
+		}
+	}
+
+	&.ng-leave{
+		z-index: 1;
+		opacity: 0.5;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		&.ng-leave-active{
+			opacity: 0;
+		}
+	}
+
+	&.anim-scale{
+		transform: initial;
+		&.ng-enter{
+			transform: scale(0.2);
+		}
+		&.ng-leave{
+			transform: scale(1);
+		}
+		&.ng-enter-active{
+			transform: scale(1);
+		}
+		&.ng-leave-active{
+			transform: scale(0.5);
+		}
+	}
+
+	&.anim-flip{
+		transform: initial;
+		&.ng-enter, &.ng-leave{
+			transition: all 150ms ease-out;
+		}
+		&.ng-enter{
+			transition-delay: 150ms;
+			transform: rotateY(-90deg);
+		}
+		&.ng-leave{
+			transform: rotateY(0);
+		}
+		&.ng-enter-active{
+			transform: rotateY(0);
+		}
+		&.ng-leave-active{
+			transform: rotateY(90deg);
+		}
+	}
+
+	&.anim-swipe{
+		transform: initial;
+		&.ng-enter{
+			transform: translate3d(0,-10px,0);
+		}
+		&.ng-leave{
+			bottom: 10px;
+			transform: translate3d(0,0,0);
+		}
+		&.ng-enter-active{
+			transform: translate3d(0,0,0);
+		}
+		&.ng-leave-active{
+			transform: translate3d(0,10px,0);
+		}
+	}
+
+	&.anim-fade-in{
+		transform: initial;
+		&.ng-enter, &.ng-leave{
+			transition: opacity 500ms ease;
+		}
+		&.ng-enter{
+			opacity: 0.4;
+		}
+		&.ng-leave{
+			display: none;
+		}
+		&.ng-enter-active{
+			opacity: 1;
+		}
+		&.ng-leave-active{
+		}
+	}
+}
+
+
+.slide-vertical{
+	transform: translate3d(0, 0, 0);
+	z-index: 1;
+	position: relative;
+
+	&.ng-enter, &.ng-leave, &.ng-hide-add, &.ng-hide-remove{
+		transition: transform 350ms ease;
+		z-index: 0;
+	}
+	&.ng-enter, &.ng-hide-remove{
+		transform: translate3d(0, -100%, 0);
+		&.reverse{
+			border-top: 1px solid transparent; //fix body scrolling
+			transform: translate3d(0, 100%, 0);
+		}
+	}
+	&.ng-enter-active, &.ng-hide-remove-active{
+		transform: translate3d(0, 0, 0);
+		z-index: 0;
+		&.reverse{
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	&.ng-leave, &.ng-hide-add{
+		transform: translate3d(0, 0, 0);
+		&.reverse{
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	&.ng-leave-active, &.ng-hide-add-active{
+		transform: translate3d(0, -100%, 0);
+		z-index: 0;
+		&.reverse{
+			border-top: 1px solid transparent; //fix body scrolling
+			transform: translate3d(0, 100%, 0);
+		}
+	}
+}
+
+.spin{
+	animation: spin 1s infinite linear;
+}
+
+@keyframes spin{
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(359deg);}
+}
+
+/*.slide-down{
+	z-index: 1;
+	position: relative;
+	transition: all 250ms ease;
+}*/
+
+.overlay-inactive-mask{
+	&.ng-enter, &.ng-hide-remove{
+		transition: all 500ms ease;
+	}
+	&.ng-leave, &.ng-hide-add{
+
+	}
+	&.ng-enter, &.ng-hide-remove{
+		opacity: 0;
+	}
+	&.ng-enter-active, &.ng-hide-remove-active{
+		opacity: 0.5;
+	}
+	&.ng-leave, &.ng-hide-add{
+		opacity: 0;
+	}
+	&.ng-leave-active, &.ng-hide-add-active{
+		opacity: 0;
+	}
+}

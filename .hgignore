@@ -1,0 +1,18 @@
+node_modules/
+build/
+platforms/
+.sass-cache/
+.tmp/
+merges/
+nbproject/
+nb/
+plugins/
+test/
+www/
+app/bower_components
+syntax: glob
+npm-debug.log
+*.tmp
+*.orig
+*.bat
+.idea/

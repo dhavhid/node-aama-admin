@@ -1,0 +1,1 @@
+<div ui-tree-handle><div><div class="pt15"><i class="icon-drag ui-tree-handle" title="Drag"></i> <span>{{page.title}}</span></div></div><ol ui-tree-nodes ng-model="page.pages" ng-if="page.pages" class="slim-nodes"><li class="target-node" ng-repeat="page in page.pages" ui-tree-node ng-include="'views/components/pageOrderNodes.html'"></li></ol></div>

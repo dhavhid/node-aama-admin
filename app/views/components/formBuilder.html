@@ -1,0 +1,20 @@
+<div class="form-builder">
+	<h3>Drag and drop elements</h3>
+
+	<div ui-tree data-nodrop-enabled="true" data-clone-enabled="true" class="source-elements">
+		<ol ui-tree-nodes ng-model="FormBuilder.elements" class="row">
+			<li ng-repeat="node in FormBuilder.elements" class="col col-xs-6 col-sm-4 col-md-3" title="Drag and drop">
+				<div ui-tree-node ui-tree-handle class="node-cont" data-node-type="targetFormNode">
+					<div>{{FormBuilder.properties[node.type].title}} <i class="pull-right" ng-class="FormBuilder.properties[node.type].icon"></i></div>
+				</div>
+			</li>
+		</ol>
+	</div>
+
+	<h3>Form items <small>(click for options)</small></h3>
+	<div ui-tree="FormBuilder.targetTreeOptions" data-empty-placeholder-enabled="true" class="mt20 target-elements root-nodes">
+		<ol ui-tree-nodes ng-model="FormBuilder.formItems" data-nodes-type="targetFormNode">
+			<li class="target-node" ng-repeat="node in FormBuilder.formItems" ui-tree-node ng-include="'views/components/formBuilderNodes.html'" data-collapsed="false" data-node-type="targetFormNode"></li>
+		</ol>
+	</div>
+</div>

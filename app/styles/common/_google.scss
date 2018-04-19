@@ -1,0 +1,44 @@
+#gmap{
+	min-height: 100px;
+	height: 250px;
+}
+
+.google-info-window{
+	overflow-y: auto;
+	line-height: 1.35;
+	min-width: 220px;
+	.wrapper{
+		max-width: 200px;
+	}
+}
+.google-control{
+	box-shadow: 0px 0px 7px -2px #000;
+	margin: 10px;
+	opacity: 0.9;
+	border-radius: 5px;
+	overflow: hidden;
+	button{
+		color: #000;
+		background-color: #fff;
+		border: 1px solid #eee;
+		font-size: 26px;
+		width: 40px;
+		height: 40px;
+		line-height: 30px;
+		padding: 0;
+		text-align: center;
+		outline: 0;
+	}
+}
+a[href^="http://maps.google.com/maps"], .gmnoprint a{
+	display:none !important
+}
+.gm-style-iw{
+	>div{
+		overflow-x: hidden !important;
+		overflow-y: auto !important;
+		>div{
+			overflow: visible !important;
+		}
+	}
+}

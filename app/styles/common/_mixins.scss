@@ -1,0 +1,111 @@
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip:    padding;
+	background-clip:         padding-box;
+}
+
+@mixin vertical-gradient($color-from, $color-to){
+	background: linear-gradient(to bottom,  $color-from 0%,$color-to 100%);
+}
+
+@mixin scroll(){
+	&::-webkit-scrollbar {
+		height: 6px;
+		width: 6px;
+		background-color: lighten($scrollbar-color, 40%);
+		box-shadow: inset 0 0 5px -1px $scrollbar-color;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $scrollbar-color;
+		border-radius: 2px;
+		border: 1px solid darken($scrollbar-color, 10%);
+
+		&:hover{
+			background-color: lighten($scrollbar-color, 10%);
+		}
+	}
+}
+
+@mixin text-overflow(){
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	white-space: nowrap;
+}
+
+@mixin bg-cover{
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@mixin bg-contain{
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+@mixin z1{
+	position: relative;
+	z-index: 1;
+	box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+@mixin z2{
+	position: relative;
+	z-index: 2;
+	box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
+}
+@mixin z3{
+	position: relative;
+	z-index: 3;
+	box-shadow: 0px 17px 50px rgba(0, 0, 0, 0.19);
+}
+@mixin z4{
+	position: relative;
+	z-index: 4;
+	box-shadow: 0px 16px 28px 0 rgba(0, 0, 0, 0.22);
+}
+@mixin z5{
+	position: relative;
+	z-index: 5;
+	box-shadow: 0px 27px 24px 0 rgba(0, 0, 0, 0.2);
+}
+
+@mixin btn-circle{
+	display: inline-block;
+	width: $input-height !important;
+	padding: 0;
+	transition-property: box-shadow, background-color;
+	@include border-radius(50%);
+	@include z1;
+
+	&:hover{
+		@include z2;
+	}
+
+	span{
+		display: none;
+	}
+}
+
+@mixin p($val){padding: $val;}
+@mixin pt($val){padding-top: $val;}
+@mixin pb($val){padding-bottom: $val;}
+@mixin pl($val){padding-left: $val;}
+@mixin pr($val){padding-right: $val;}
+@mixin plr($val){padding-left: $val; padding-right: $val;}
+@mixin ptb($val){padding-top: $val; padding-bottom: $val;}
+@mixin m($val){margin: $val;}
+@mixin mt($val){margin-top: $val;}
+@mixin mb($val){margin-bottom: $val;}
+@mixin ml($val){margin-left: $val;}
+@mixin mr($val){margin-right: $val;}
+@mixin mlr($val){margin-left: $val; margin-right: $val;}
+@mixin mtb($val){margin-top: $val; margin-bottom: $val;}
+@mixin w($val){width: $val;}
+@mixin h($val){height: $val;}
+@mixin lh($val){line-height: $val;}
+@mixin op($val){opacity: $val;}
+@mixin fs($val){font-size: $val;}
+@mixin fslh($val){font-size: $val; line-height: $val;}

@@ -1,0 +1,166 @@
+@-webkit-viewport{width:device-width}
+@-moz-viewport{width:device-width}
+@-ms-viewport{width:device-width;height:device-height}
+@-o-viewport{width:device-width}
+@viewport{width:device-width}
+
+
+body, html{
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
+	color: $main-text-color;
+	background-color: $page-bg;
+	padding: 0;
+}
+
+html{
+	height: 100%;
+	background-color: $page-bg;
+	/*-ms-touch-action: pan-x;
+	touch-action: pan-x;*/
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+
+	&.has-left-list.show-left-list, &.show-right-list{
+		@media (max-width: 599px) {
+			overflow-y: hidden !important;
+		}
+	}
+}
+
+body{
+	font-size: $main-font-size;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-ms-content-zooming: none;
+	/*-ms-touch-action: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;*/
+	/* Prevent the callout on tap-hold and text selection */
+	-webkit-touch-callout: none;
+	//user-select: none;
+	/* Prevent text resize on orientation change, useful for web-apps */
+	text-size-adjust: none;
+	background-color: $page-bg;
+	background-position: top center;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	min-height: 100%;
+	position: relative;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+	&.inactive-bg{
+		background-color: $inactive-page-bg;
+	}
+}
+
+ui-view{
+	display: block;
+}
+
+::-webkit-input-placeholder, .form-control::-webkit-input-placeholder{
+	color: $placeholder-color;
+}
+
+.visible-xxs{
+	display: none;
+}
+
+@media (max-width: 599px){
+	.visible-xxs{
+		display: initial;
+	}
+
+	.hidden-xxs{
+		display: none;
+	}
+}
+
+div[data-role="inner"]{
+	display: inline-block;
+}
+
+a, .a{
+	cursor: pointer;
+	color: $link-color;
+	outline: none;
+
+	&:focus, &:active{
+		outline: none;
+		color: $link-color;
+		text-decoration: none;
+	}
+	&:hover{
+		text-decoration: none;
+		color: lighten($link-color, 20%);
+	}
+}
+
+[class^="icon-"], [class*=" icon-"]{
+	@extend .icon;
+	line-height: inherit;
+	display: inline-block;
+}
+
+[class^="page-"], [class*=" page-"]{
+	min-height: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	h1{
+		margin-top: 0;
+	}
+}
+
+h1, h2, h3, h4{
+	text-align: center;
+}
+
+.content-bg{
+	background-color: $page-bg;
+}
+
+table{
+	th{
+		text-align: center;
+	}
+
+	td, th{
+		border: 1px solid $border-color;
+		padding: 5px;
+		vertical-align: top;
+	}
+
+	.subrow{
+		td{
+			border-top: none;
+			border-bottom: none;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	ul{
+		margin-bottom: 0;
+	}
+
+	.bb0{
+		td{
+			border-bottom: none;
+		}
+	}
+	.bt0{
+		td{
+			border-top: none;
+		}
+	}
+}
+
+ol{
+	&.margins{
+		>li{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+	}
+}

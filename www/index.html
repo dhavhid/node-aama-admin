@@ -1,0 +1,18 @@
+<!doctype html><html ng-controller="MainCtrl" ng-class="{'has-left-list': LeftList.use, 'show-left-list': LeftList.visible, 'show-right-list': RightList.visible, 'has-header-img': global.emptyHeader}"><head><base href="/"><script>(function(){
+				window.globalVars = {
+					appName: 'aama',
+					html5mode: true
+				};
+
+				document.querySelector('base').href = window.globalVars.html5mode ? '/' : '';
+			})();
+
+			window.onload = function(){
+				window.globalVars.isCordova = typeof cordova !== 'undefined' || typeof phonegap !== 'undefined';
+				function bootstrap(){
+					angular.bootstrap(document, [window.globalVars.appName]);
+				};
+				window.globalVars.isCordova ? document.addEventListener('deviceready', bootstrap, false) : bootstrap();
+			};</script><meta name="fragment" content="!"><meta http-equiv="Content-Security-Policy" content=""><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width"><meta charset="utf-8"><title>AAMA</title><link rel="icon" href="favicon.ico" type="image/x-icon"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css"><link rel="stylesheet" href="styles/029ace3a.vendor.css"><link rel="stylesheet" href="styles/47878272.main.css"><body ng-class="{'has-left-list': LeftList.use, 'show-left-list': LeftList.visible, 'inactive-bg': global.inactivePageBg}"><!--[if lt IE 9]>
+			<div class="browsehappy bg-warning text-center fs32 p20">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</div>
+		<![endif]--><div class="global-loader ng-hide" ng-show="loader.global"><div><i class="icon-loading2 spin"></i></div></div><div id="header" ng-include="'views/components/header.html'"></div><div class="container-fluid-"><div ui-view="list" autoscroll="false" class="side-list left-list window-height {{LeftList.listClass}} {{LeftList.loader ? 'loading' : ''}}" ng-class="{'show-left-list': LeftList.visible, 'inactive': LeftList.inactive}" ng-if="LeftList.use"></div><div ui-view id="page-view" autoscroll="true" class="view-change anim-flip main-view"></div><div ng-include="'views/list/rightList.html'" class="side-list right-list line2 window-height invisible {{RightList.listClass}}" ng-class="{'inactive': RightList.inactive, 'loading': RightList.loader}" ng-style="{'visibility': RightList.visible ? 'visible' : 'hidden'}" ng-if="RightList.visible"></div></div><div ng-include="'views/components/notify.html'"></div><script src="scripts/3684e156.vendor.js"></script><script src="scripts/819dae93.scripts.js"></script><script src="scripts/templates.js"></script>

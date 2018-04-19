@@ -1,0 +1,104 @@
+/*.form-control, .btn{
+	background-clip: padding-box;
+}*/
+
+.input-group-addon{
+	border-color: $border-color;
+}
+.form-control{
+	border-color: $border-color;
+
+	&:focus{
+		box-shadow: none;
+		border-color: $active-input-color;
+	}
+}
+.progress-bar{
+	transition: width .2s ease;
+}
+
+.datepicker, .timepicker{
+	background-color: $page-bg;
+	z-index: 1040;
+
+	td, th{
+		vertical-align: middle;
+		padding: 0;
+		border: 0;
+	}
+
+	thead, tfoot{
+		th{
+			button{
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+		}
+	}
+
+	.btn{
+		font-size: $main-font-size;
+		line-height: 1.6;
+		height: auto;
+
+		&:hover{
+			background-color: lighten($active-input-color, 20%);
+			color: inherit;
+		}
+
+		span{
+			line-height: 1;
+		}
+
+		i{
+			line-height: 1;
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	.btn-today{
+		color: darken($active-input-color, 25%);
+
+		&:hover{
+			color: darken($active-input-color, 25%);
+		}
+	}
+}
+
+.modal-backdrop{
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1040;
+}
+
+.modal.center .modal-dialog{
+	margin: 0;
+	min-width: 300px;
+}
+
+/*.btn:hover, .btn:focus, .btn.focus{
+	color: inherit;
+}*/
+
+.aside, .aside-backdrop{
+	bottom: auto;
+	height: 100%;
+	height: calc(100% + 70px);
+}
+
+.collapse.am-collapse {
+	animation-duration: 350ms;
+	animation-timing-function: ease;
+	animation-fill-mode: backwards;
+	overflow: hidden;
+	&.in-remove {
+		animation-name: collapse;
+		display: block;
+	}
+	&.in-add {
+		animation-name: expand;
+	}
+}

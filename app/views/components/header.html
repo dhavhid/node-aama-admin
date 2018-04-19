@@ -1,0 +1,24 @@
+<nav class="navbar navbar-fixed-top">
+	<!--div class="pattern" ng-if="$state.includes('login')"></div-->
+
+	<div class="container-fluid pl0" ng-if="!global.emptyHeader">
+		<div class="list-header">
+			<span class="logo pull-left">
+				<div class="reqs-loader-logo" ng-if="loading.activeRequests">
+					<i class="icon-loading spin"></i>
+				</div>
+				<img alt="Brand" src="images/logo-blue-mini.png" ng-style="{'opacity': loading.activeRequests ? 0 : 1}">
+			</span>
+			<button type="button" class="btn btn-clear pull-right menu-btn" ng-click="menu.toggle()">
+				<span>{{global.menuItem | translate}}</span><i class="icon-arrow-drop-down"></i>
+			</button>
+		</div>
+
+		<div class="user">
+			<a ui-sref="users.profile({userId: authUser.id})">
+				<img src="images/no-user.png" ng-src="{{authUser.images.logo.data.thumb}}">
+				<span class="username">{{authUser.firstName}} {{authUser.lastName}}</span>
+			</a>
+		</div>
+	</div>
+</nav>

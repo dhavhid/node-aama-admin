@@ -1,0 +1,105 @@
+[ng-click]{cursor: pointer;}
+.stick {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  border-top: 1px solid #E4E4E1;
+  background-color: #fff;
+  width: 100%;
+  z-index: 1001;
+}
+.stick .btn {
+  margin: 10px;
+}
+ol{list-style-type: decimal; list-style-position: outside; padding-left: 20px;}
+ul{list-style-type: disc; list-style-position: outside; padding-left: 20px;}
+ul, ol{margin: 0; padding: 0; list-style: none;}
+s{text-decoration: none;}
+.pos-rel{position: relative;}
+.pos-abs{position: absolute;}
+.oh{overflow: hidden;}
+.oa{overflow: auto;}
+.oya{overflow-y: auto;}
+.oyh{overflow-y: hidden;}
+.oxa{overflow-x: auto;}
+.oxh{overflow-x: hidden;}
+.wp100{width: 100%;}
+.maxwp100{max-width: 100%;}
+.hp100{height: 100%;}
+.h1px{height: 1px;}
+.maxhp100{max-height: 100%;}
+.minhp100{min-height: 100%; height: 1px;}
+.dimp100{width: 100%; height: 100%;}
+.ib{display: inline-block;}
+.vmiddle{vertical-align: middle;}
+.text-overflow{@include text-overflow;}
+.bottom-fixed{position: fixed; bottom: 0; left: 0; right: 0;}
+.top-fixed{position: fixed; top: 0; left: 0; right: 0;}
+.bottom-absolute{position: absolute !important; bottom: 0; left: 0; right: 0;}
+.top-absolute{position: absolute !important; top: 0; left: 0; right: 0;}
+.nowrap{white-space: nowrap;}
+.break-word{word-break: break-word;}
+.cover-bg{background-size: cover; background-position: center center;}
+.contain-bg{background-size: contain; background-position: center center; background-repeat: no-repeat;}
+.upper{text-transform: uppercase;}
+.lower{text-transform: lowercase;}
+.bold{font-weight: bold;}
+.table{display: table; margin: 0;}
+.table-row{display: table-row;}
+.table-cell{display: table-cell; vertical-align: top;}
+.wbn{word-break: normal;}
+.wbni{word-break: normal !important;}
+.em{font-style: italic;}
+.bg-cover{@include bg-cover;}
+.bg-contain{@include bg-contain;}
+.vert-top{vertical-align: top;}
+
+
+// make table width 100% on orientation change
+@media screen and (orientation:landscape) {
+	.table.wp100, table-row.wp100{width: 100%;}
+}
+@media screen and (orientation:portrait) {
+	.table.wp100, table-row.wp100{width: 100%;}
+}
+
+/* 0 - 100 step 5 */
+$k: 0;
+@while $k <= 100 {
+	$valpx: 1px * $k;
+	$valkoef: $k / 100;
+	$valperc: $k * 1%;
+	.p#{$k} {@include p($valpx);}       .p#{$k}i {@include p($valpx !important);}
+	.pt#{$k} {@include pt($valpx);}     .pt#{$k}i {@include pt($valpx !important);}
+	.pb#{$k} {@include pb($valpx);}     .pb#{$k}i {@include pb($valpx !important);}
+	.pl#{$k} {@include pl($valpx);}     .pl#{$k}i {@include pl($valpx !important);}
+	.pr#{$k} {@include pr($valpx);}     .pr#{$k}i {@include pr($valpx !important);}
+	.ptb#{$k} {@include ptb($valpx);}   .ptb#{$k}i {@include ptb($valpx !important);}
+	.plr#{$k} {@include plr($valpx);}   .plr#{$k}i {@include plr($valpx !important);}
+	.m#{$k} {@include m($valpx);}       .m#{$k}i {@include m($valpx !important);}
+	.mt#{$k} {@include mt($valpx);}     .mt#{$k}i {@include mt($valpx !important);}
+	.mb#{$k} {@include mb($valpx);}     .mb#{$k}i {@include mb($valpx !important);}
+	.ml#{$k} {@include ml($valpx);}     .ml#{$k}i {@include ml($valpx !important);}
+	.mr#{$k} {@include mr($valpx);}     .mr#{$k}i {@include mr($valpx !important);}
+	.mtb#{$k} {@include mtb($valpx);}   .mtb#{$k}i {@include mtb($valpx !important);}
+	.mlr#{$k} {@include mlr($valpx);}   .mlr#{$k}i {@include mlr($valpx !important);}
+	.w#{$k} {@include w($valpx);}       .w#{$k}i {@include w($valpx !important);}
+	.wp#{$k} {@include w($valperc);}    .wp#{$k}i {@include w($valperc !important);}
+	.h#{$k} {@include h($valpx);}       .h#{$k}i {@include h($valpx !important);}
+	.lh#{$k} {@include lh($valpx);}     .lh#{$k}i {@include lh($valpx !important);}
+	.op#{$k} {@include op($valkoef);}   .op#{$k}i {@include op($valkoef !important);}
+	$k: $k + 5;
+}
+
+/* 0 - 40 step 1 */
+$k: 0;
+@while $k <= 40 {
+	$valpx: 1px * $k;
+	$valkoef: $k / 100;
+	$valperc: $k * 1%;
+	.lh#{$k} {@include lh($valpx);}     .lh#{$k}i {@include lh($valpx !important);}
+	.fs#{$k} {@include fs($valpx);}     .fs#{$k}i {@include fs($valpx !important);}
+	.fslh#{$k} {@include fslh($valpx);} .fslh#{$k}i {@include fslh($valpx !important);}
+	$k: $k + 1;
+}
+

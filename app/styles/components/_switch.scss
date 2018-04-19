@@ -1,0 +1,115 @@
+switch{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+
+	&:hover, &:active, &[disabled]{
+		opacity: 0.8;
+	}
+
+	&[disabled]{
+		.onoff{
+			cursor: default;
+		}
+	}
+}
+
+.onoff{
+	width: 42px;
+	height: 26px;
+
+	label, ins{
+		height: 32px;
+		width: 65px;
+		display: inline-block;
+		position: absolute;
+		z-index: 10;
+		cursor: pointer;
+	}
+	.onoff-bg{
+		height: 20px;
+		background: lighten($inactive-input-color, 20%);
+		border-radius: 7px;
+		position: absolute;
+		top: 4px;
+		bottom: 0;
+		left: 6px;
+		right: 6px;
+		transition: background-color 150ms ease-in-out;
+		z-index: 2;
+
+		&.on{
+			background-color: lighten($active-input-color, 15%);
+			.onoff-pimp{
+				background-color: darken($active-input-color, 15%);
+				transform: translate3d(13px,0,0);
+			}
+			.off-text{
+				visibility: hidden;
+			}
+			.on-text{
+				visibility: visible;
+				color: #000;
+			}
+		}
+
+		.onoff-pimp{
+			transform: translate3d(-7px,0,0);
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			top: 0px;
+			left: 0;
+			margin-left: 2px;
+			background-color: $inactive-input-color;
+			border-radius: 50%;
+			transition: transform,background-color,box-shadow;
+			transition-duration: 150ms;
+			transition-timing-function: ease-in-out;
+		}
+		span{
+			font-size: 11px;
+			top: 0;
+			line-height: 32px;
+			position: absolute;
+			width: 28px;
+			display: inline-block;
+			text-align: center;
+			&.on-text{
+				left: 5px;
+			}
+			&.off-text{
+				right: 5px;
+			}
+		}
+		.off-text{
+			visibility: visible;
+		}
+		.on-text{
+			visibility: hidden;
+		}
+	}
+	input[type="checkbox"]{
+		width: 0;
+		height: 0;
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		&:checked + .onoff-bg{
+			background: #ccc;
+			.onoff-pimp{
+				margin-left: 35px;
+			}
+			.off-text{
+				visibility: hidden;
+			}
+			.on-text{
+				visibility: visible;
+				color: #000;
+			}
+		}
+		&:disabled + .onoff-bg{
+			opacity: 0.6;
+		}
+	}
+}

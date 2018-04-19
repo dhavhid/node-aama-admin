@@ -1,0 +1,56 @@
+<div class="page-forms">
+	<form name="formForm" class="row">
+		<div class="col-lg-6 col-md-12">
+			<div class="info-card">
+				<div class="card mini">
+					<div class="actions with-options">
+						<div class="pos-rel">
+							<h1 class="title">{{input.title | emptySign}}</h1>
+							<button type="button" ng-if="input.id && dropdown.formOptions.length" class="btn btn-clear icon-more-vert pull-right" bs-dropdown="dropdown.formOptions" placement="bottom-right"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-md-12">
+			<div bs-collapse ng-model="collapsers.information" class="collapser" ng-class="{'collapsed': collapsers.information}">
+				<h2 bs-collapse-toggle class="subheader collapse-toggle">
+					<span translate>Information</span><i class="collapse-icon icon-arrow-drop-down"></i>
+				</h2>
+				<div bs-collapse-target>
+					<div m-input class="form-item" label="{{'Title' | translate}} *">
+						<input type="text" name="formTitle" ng-model="input.title" ng-disabled="!userPermissions.edit" ng-required="!collapsers.information" maxlength="500">
+					</div>
+
+					<div m-input class="form-item" label="{{'Notification Email' | translate}} *">
+						<input type="email" name="formEmail" ng-model="input.email" ng-disabled="!userPermissions.edit" maxlength="50" ng-required="!collapsers.information">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<div class="mb20">
+		<div ng-include="'views/components/formBuilder.html'"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6 col-md-12">
+			<div bs-collapse ng-model="collapsers.settings" class="collapser" ng-class="{'collapsed': collapsers.settings}">
+				<h2 bs-collapse-toggle class="subheader collapse-toggle" translate>
+					<span translate>Settings</span><i class="collapse-icon icon-arrow-drop-down"></i>
+				</h2>
+				<div bs-collapse-target>
+					<div class="options-field">
+						<span translate>Visible</span>
+						<switch class="pull-right" sw-model="input.isVisible" options="{'showLabels': false}" ng-disabled="!userPermissions.edit"></switch>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<floating-action-btns></floating-action-btns>
+	<ng-include src="'views/components/lastEdit.html'"></ng-include>
+	<ng-include src="'views/components/actionBtns.html'" ng-if="userPermissions.edit || userPermissions.add" onload="module.save = save"></ng-include>
+</div>

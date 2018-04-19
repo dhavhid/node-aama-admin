@@ -1,0 +1,69 @@
+.notification{
+	position: fixed;
+	left: 0;
+	right: 0;
+	opacity: 0.9;
+	color: $notify-color;
+	cursor: pointer;
+	background-color: $info-bg;
+	z-index: 1100 !important;
+
+	&:hover{
+		opacity: 1;
+	}
+
+	&.notify-error{
+		background-color: $error-bg;
+		.info-icon-cell{
+			background-color: darken($error-bg, 10%);
+		}
+	}
+	&.notify-success{
+		background-color: $success-bg;
+		.info-icon-cell{
+			background-color: darken($success-bg, 10%);
+		}
+	}
+	&.notify-info{
+		background-color: $info-bg;
+		.info-icon-cell{
+			background-color: darken($info-bg, 10%);
+		}
+	}
+
+	&.ng-hide-add, &.ng-hide-remove {
+		display: block !important;
+	}
+
+	.table{
+		display: table;
+	}
+
+	.table-cell{
+		vertical-align: middle;
+	}
+	.info-icon-cell{
+		font-size: 30px;
+		text-align: center;
+		width: 50px;
+		min-height: 50px;
+		height: 100%;
+		vertical-align: middle;
+
+		i{
+			display: inline;
+			vertical-align: middle;
+		}
+	}
+}
+
+.notification.bottom{
+	bottom: 0;
+	/*@include border-radius(5px);
+	margin: 10px;*/
+}
+
+.notification.top{
+	top: 0;
+}
+

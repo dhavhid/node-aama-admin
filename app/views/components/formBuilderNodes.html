@@ -1,0 +1,161 @@
+<div>
+	<div class="ptb15 pr30 w-closer" ng-click="node.showOptions = !node.showOptions">
+		<i class="icon-drag ui-tree-handle" ui-tree-handle title="Drag"></i>
+		<i ng-class="FormBuilder.properties[node.type].icon"></i>
+		<span>{{FormBuilder.properties[node.type].title}} [{{node.label}}]</span>
+	</div>
+	<a class="icon-close closer" ng-click="FormBuilder.deleteNodeConfirm(this)" title="Remove"></a>
+</div>
+
+
+
+<div ng-if="node.showOptions" class="row node-options">
+	<div class="col-lg-6 col-md-12">
+		<div m-input class="form-item" label="{{'Label' | translate}}">
+			<input type="text" ng-model="node.label" ng-disabled="!userPermissions.edit">
+		</div>
+
+		<div ng-if="node.type === 'text'">
+			<div class="form-item" m-input label="{{'Input type' | translate}}">
+				<select ng-disabled="!userPermissions.edit" ng-model="node.data.inputType" ng-options="type.val as type.name for type in FormBuilder.inputTypes"></select>
+			</div>
+
+			<div m-input class="form-item" label="{{'Default value' | translate}}">
+				<input type="{{node.data.inputType}}" ng-model="node.data.defaultValue" ng-disabled="!userPermissions.edit">
+			</div>
+		</div>
+
+		<div ng-if="node.type === 'textarea'">
+			<div m-input class="form-item" max-height="140" label="{{'Default Value' | translate}}">
+				<textarea ng-model="node.data.defaultValue" ng-disabled="!userPermissions.edit" maxlength="10000"></textarea>
+			</div>
+		</div>
+
+		<div ng-if="node.type === 'date'">
+			<div class="options-field">
+				<span translate>"Now" by default</span>
+				<switch class="pull-right" sw-model="node.data.nowByDefault" options="{'showLabels': false}"></switch>
+			</div>
+
+			<div class="options-field w-btn" ng-class="{'op50': node.data.nowByDefault}">
+				<span translate>Default value</span>
+				<s>{{node.data.defaultValue | date | emptySign}}</s>
+				<label class="btn btn-clear icon-mode-edit btn-datepicker" ng-if="!node.data.nowByDefault">
+					<input type="text" ng-model="node.data.defaultValue" bs-datepicker>
+				</label>
+			</div>
+		</div>
+
+		<div ng-if="node.type === 'info'">
+			<div class="mtb10">
+				<label class="radio-field mr10">
+					<input type="radio" name="textType" value="textarea" ng-model="node.data.textType">
+					<i ng-class="node.data.textType === 'textarea' ? 'icon-radio-button-on' : 'icon-radio-button-off'"></i>
+					<span>Textarea</span>
+				</label>
+				<label class="radio-field">
+					<input type="radio" name="textType" value="wysiwyg" ng-model="node.data.textType">
+					<i ng-class="node.data.textType === 'wysiwyg' ? 'icon-radio-button-on' : 'icon-radio-button-off'"></i>
+					<span>WYSIWYG</span>
+				</label>
+			</div>
+
+			<div class="form-item" ng-if="node.data.textType === 'wysiwyg'">
+				<label translate>Text</label>
+				<wysiwyg-edit content="node.data.text"></wysiwyg-edit>
+			</div>
+			<div m-input class="form-item" ng-if="node.data.textType === 'textarea'" max-height="140" label="{{'Text' | translate}}">
+				<textarea ng-model="node.data.text" ng-disabled="!userPermissions.edit" maxlength="10000"></textarea>
+			</div>
+		</div>
+
+		<div ng-if="node.type === 'checkbox' || node.type === 'radio'">
+			<div class="options-field">
+				<span translate>Checked by default</span>
+				<switch class="pull-right" sw-model="node.data.checked" options="{'showLabels': false}" ng-disabled="!userPermissions.edit"></switch>
+			</div>
+		</div>
+
+		<div ng-if="node.type === 'select'">
+			<div class="select-options">
+				<form m-input class="options-field w-btn" label="{{'Add option' | translate}}" ng-submit="FormBuilder.addSelectOption(node, this)">
+					<input type="text" ng-model="node.data.selectOption" ng-disabled="!userPermissions.edit">
+					<button type="submit" class="btn btn-clear icon-add" title="Add"></button>
+				</form>
+
+				<div ng-if="node.data.options.length">
+					<div>Options:</div>
+					<ul class="options-list" ui-tree-nodes ng-model="node.data.options" data-nodes-type="selectOption">
+						<li ng-repeat="opt in node.data.options" ui-tree-node data-node-type="selectOption">
+							<i ui-tree-handle class="icon-drag mt5"></i>
+							<span>{{opt.label}}</span>
+							<a class="pull-right icon-close closer" ng-click="FormBuilder.deleteNodeConfirm(this)"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-lg-6 col-md-12">
+		<div class="options-field">
+			<span translate>Visible</span>
+			<switch class="pull-right" sw-model="node.isVisible" options="{'showLabels': false}" ng-disabled="!userPermissions.edit"></switch>
+		</div>
+		<div class="options-field">
+			<span translate>Required</span>
+			<switch class="pull-right" sw-model="node.isRequired" options="{'showLabels': false}" ng-disabled="!userPermissions.edit"></switch>
+		</div>
+
+		<h4 ng-if="node.type !== 'group'" class="text-left">Preview:</h4>
+		<div class="node-item-preview">
+			<div ng-if="node.type === 'radio'" class="mtb10">
+				<label class="radio-field">
+					<i ng-class="node.data.checked ? 'icon-radio-button-on' : 'icon-radio-button-off'"></i>
+					<span>{{node.label}}</span>
+				</label>
+			</div>
+
+			<div ng-if="node.type === 'checkbox'" class="mtb10">
+				<label class="radio-field">
+					<i ng-class="node.data.checked ? 'icon-check-box' : 'icon-check-box-outline-blank'"></i>
+					<span>{{node.label}}</span>
+				</label>
+			</div>
+
+			<div ng-if="node.type === 'text'" m-input class="form-item" label="{{node.label}}">
+				<input type="{{node.data.inputType}}" ng-model="node.data.defaultValue" disabled>
+			</div>
+
+			<div class="form-item" ng-if="node.type === 'textarea'">
+				<label>{{node.label}}</label>
+				<div class="textarea-output" ng-bind-html="node.data.defaultValue | nl2br"></div>
+			</div>
+
+			<div class="options-field w-btn" ng-if="node.type === 'date'">
+				<span translate>{{node.label}}</span>
+				<s>{{node.data.nowByDefault ? _.now() : node.data.defaultValue | date | emptySign}}</s>
+				<label class="btn btn-clear icon-mode-edit btn-datepicker"></label>
+			</div>
+
+			<div class="form-item" ng-if="node.type === 'info'">
+				<label>{{node.label}}</label>
+				<div class="textarea-output" ng-bind-html="node.data.text | nl2br"></div>
+			</div>
+
+			<div class="form-item" m-input label="{{node.label}}" ng-if="node.type === 'select' && node.data.options.length">
+				<select ng-model="node.data.previewModel" ng-options="opt.id as opt.label for opt in node.data.options"></select>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<span class="hint" ng-if="node.formItems && !node.formItems.length">
+	<i class="icon-info-outline"></i> To add an item, drag it from the bottom up and right <img src="images/drag-hint.png" class="drag-hint">
+</span>
+<ol ui-tree-nodes ng-model="node.formItems" ng-if="node.formItems" data-nodes-type="targetFormNode">
+	<li class="target-node" ng-repeat="node in node.formItems" ui-tree-node ng-include="'views/components/formBuilderNodes.html'" data-node-type="targetFormNode"></li>
+</ol>

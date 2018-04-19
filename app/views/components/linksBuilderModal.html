@@ -1,0 +1,58 @@
+<div ng-controller="LinksBuilderCtrl">
+	<br />
+	<div class="row">
+		<div class="col-sm-12">
+			<p>Select the type of link that you want to create:</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="radio-inline">
+				<label>
+					<input type="radio" name="link_type" ng-model="selected_link.link_type" value="simple_link">
+					Simple Link
+				</label>
+			</div>
+			<div class="radio-inline">
+				<label>
+					<input type="radio" name="link_type" ng-model="selected_link.link_type" value="static_page">
+					Pages
+				</label>
+			</div>
+			<div class="radio-inline">
+				<label>
+					<input type="radio" name="link_type" ng-model="selected_link.link_type" value="news_list">
+					News
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-if="selected_link.link_type == 'simple_link'">
+		<div class="col-lg-12">
+			<div class="form-item">
+				<label style="display:block;">Simple Link</label>
+				<input type="text" ng-model="selected_link.link" class="form-control">
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-if="selected_link.link_type == 'static_page'">
+		<div class="col-lg-12">
+			<div class="form-item">
+				<label style="display:block;">Pages</label>
+				<select class="form-control" chosen allow-single-deselect="true" ng-model="selected_link.pageslink" ng-options="item.slug as item.title for item in pages"></select>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-if="selected_link.link_type == 'news_list'">
+		<div class="col-lg-12">
+			<div class="form-item">
+				<label style="display:block;">News</label>
+				<select class="form-control" chosen allow-single-deselect="true" ng-model="selected_link.newslink" ng-options="item.id as item.title for item in news"></select>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a class="btn btn-default" ng-click="hide()">Cancel</a>
+		<a class="btn btn-default" ng-click="hide(selected_link)">Ok</a>
+	</div>
+</div>

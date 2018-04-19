@@ -1,0 +1,32 @@
+.check-field{
+	display: block;
+	margin: 0;
+	padding: 5px 0;
+	line-height: 32px;
+
+	.checker{
+		display: inline-block;
+		width: 28px;
+		height: 28px;
+		line-height: 26px;
+		@include border-radius(5px);
+		text-align: center;
+		background-color: transparent;
+		border: 1px solid #ccc;
+		color: rgba($contrast-color, 0.15);
+		margin-right: 5px;
+	}
+
+	input[type="checkbox"]{
+		position: absolute;
+		display: none;
+		opacity: 0;
+
+		&:checked{
+			+.checker{
+				background-color: #ccc;
+				color: $contrast-color;
+			}
+		}
+	}
+}

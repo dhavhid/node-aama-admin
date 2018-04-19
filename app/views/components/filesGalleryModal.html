@@ -1,0 +1,49 @@
+<div ng-controller="FilesGalleryCtrl" class="files-gallery" role="dialog">
+	<div m-input class="w-btn" label="Search">
+		<input type="text" ng-model="input.kw" ng-change="search()" focus="true">
+		<a class="btn btn-clear" ng-class="Api.activeReqs.files ? 'icon-loading spin' : (input.kw ? 'icon-close' : 'icon-search')" ng-click="input.kw && search('', 0)"></a>
+	</div>
+
+	<div class="mtb10 oh gallery">
+		<h4>{{files.length ? 'Select Files' : (files && !files.length ? 'No files' : '')}}</h4>
+
+		<div class="scroller" scroll-top="files">
+			<div ng-repeat="file in files" class="file-entry col-xs-6 col-sm-4 col-lg-3 mb10" title="{{::file.title}}">
+				<div ng-switch="::file.type" class="file-preview">
+					<div ng-switch-when="image" bg-img="{{::file.source}}" class="contain-bg hp100 type-image" ng-click="Modal.imageModal(this, file.source)"></div>
+					<div ng-switch-when="video" ng-if="::file.data.previewEmbedCode" class="type-embed-video" ng-bind-html="::file.data.previewEmbedCode"></div>
+					<div ng-switch-when="video" ng-if="::!file.data.previewEmbedCode" class="type-empty-video"><i class="icon-youtube-play file-icon"></i></div>
+					<div ng-switch-when="audio" class="type-audio"><i class="icon-audiotrack file-icon"></i></div>
+					<div ng-switch-default class="type-document"><i class="icon-insert-drive-file file-icon"></i></div>
+				</div>
+				<div class="file-desc plr5">
+					<div class="text-overflow pr20" ng-click="selectFile(file)">
+						{{::file.title}}
+						<i class="selector" ng-class="module.selected[file.id] ? 'icon-check-box active' : 'icon-check-box-outline-blank'"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<button type="button" class="btn btn-clear pull-left" ng-click="pagination.prev()" ng-if="pagination.prev" ng-disabled="Api.activeReqs.files">
+				<i class="icon-chevron-left"></i><span>Previous</span>
+			</button>
+			<button type="button" class="btn btn-clear pull-right" ng-click="pagination.next()" ng-if="pagination.next" ng-disabled="Api.activeReqs.files">
+				<span>Next</span><i class="icon-chevron-right"></i>
+			</button>
+		</div>
+	</div>
+
+	<!--div class="mtb10 oh selected-files" ng-if="module.selected">
+		<h4>Selected Files</h4>
+		<div class="scroller">
+			<span class="mr10" ng-repeat="file in module.selected">{{file.title}}</span>
+		</div>
+	</div-->
+
+	<div class="modal-footer">
+		<a class="btn btn-default" ng-click="hide()">Cancel</a>
+		<a class="btn btn-default" ng-click="hide(module.selected)">Ok</a>
+	</div>
+</div>

@@ -1,0 +1,543 @@
+[z1], .z1{
+	@include z1;
+}
+[z2], .z2{
+	@include z2;
+}
+[z3], .z3{
+	@include z3;
+}
+[z4], .z4{
+	@include z4;
+}
+[z5], .z5{
+	@include z5;
+}
+
+[m-input], .m-input{
+	padding-top: 26px;
+	margin: 10px 0;
+	position: relative;
+
+	&.empty{
+		label{
+			top: 24px;
+			font-size: $label-font-size;
+		}
+	}
+
+	&.w-btn{
+		input, textarea, select, label{
+			padding-right: 30px;
+		}
+
+		.btn{
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			z-index: 2;
+			margin: 0;
+			line-height: $input-height;
+		}
+	}
+
+	input, textarea, select{
+		box-shadow: none;
+		display: block;
+		font-size: $input-font-size;
+		position: relative;
+		background-color: transparent;
+		z-index: 2;
+		width: 100%;
+		border: none;
+		border-bottom: 1px solid $border-color;
+		padding: 0;
+		padding-bottom: 1px;
+		resize: none;
+		transition: border-color 150ms ease;
+
+		&:focus{
+			border-color: $active-input-color;
+			border-bottom-width: 2px;
+			padding-bottom: 0;
+			outline: none;
+
+			+ label{
+				top: 5px;
+				font-size: $main-font-size;
+				//color: $active-input-color;
+			}
+		}
+
+		&.alt:focus{
+			border-color: $active-input-alt-color;
+		}
+	}
+
+	textarea{
+		line-height: $input-font-size * 1.5;
+		height: $input-font-size * 1.5 * 2 + 2;
+	}
+
+	label{
+		@extend .form-item-label;
+		position: absolute;
+	}
+}
+
+.error-input{
+	border-color: $error-color;
+	& + label{
+		color: $error-color;
+	}
+}
+
+input[type="text"], input[type="password"], input[type="tel"], input[type="number"], textarea{
+	&.ng-invalid.ng-touched{
+		@extend .error-input;
+	}
+}
+input[type="email"]{
+	&.ng-invalid.ng-touched:not(:focus){
+		@extend .error-input;
+	}
+}
+
+
+::-webkit-input-placeholder, .form-control::-webkit-input-placeholder{
+	color: $placeholder-color;
+}
+
+.input, .btn{
+	font-size: $input-font-size;
+	line-height: $input-height;
+	height: $input-height;
+	border: 0;
+	@include border-radius(3px);
+}
+
+.input{
+	background-color: $input-bg;
+	width: 100%;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-bottom: 2px solid $input-bg;
+	transition: border-bottom-color 150ms ease;
+
+	&:focus{
+		outline: 0;
+		border-bottom-color: $active-input-color;
+	}
+}
+
+.input-icon-cont{
+	position: relative;
+
+	i, a, button{
+		position: absolute;
+		right: 10px;
+		top: 0;
+		line-height: $input-height;
+		font-size: 26px;
+	}
+
+	.input{
+		padding-right: 36px;
+	}
+}
+
+.btn{
+	background-color: transparent;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 0 16px;
+	vertical-align: baseline;
+	outline-color: transparent;
+	transition-property: background-color,outline-color,color;
+	transition-duration: 250ms;
+	transition-timing-function: ease;
+
+	&:hover, &:focus{
+		outline: none;
+
+		&:active{
+			outline: none;
+		}
+	}
+
+	&:hover{
+		//color: $active-input-color;
+	}
+
+	&:active{
+		transition: none;
+		box-shadow: none;
+		//color: rgba($active-input-color, 0.7);
+	}
+
+
+	&:focus{
+		//color: $muted-text-color;
+		outline-color: $active-input-color;
+		&:active{
+			outline-color: $active-input-color;
+		}
+	}
+
+	*{
+		vertical-align: middle;
+	}
+
+	i, &[class^="icon-"], &[class*=" icon-"]{
+		line-height: $input-height;
+		font-size: 26px;
+		margin: 0 5px;
+		font-weight: normal;
+	}
+
+	span{
+		line-height: $input-height;
+		//vertical-align: top;
+	}
+}
+
+.btn-default{
+	color: $main-text-color;
+
+	&:hover, &:focus, &:active{
+		background-color: transparent;
+	}
+
+	&:hover{
+		color: rgba($main-text-color, 0.8);
+	}
+
+	&:active{
+		transition: none;
+		box-shadow: none;
+		color: $active-input-color;
+
+		&:focus{
+			//color: $main-text-color;
+		}
+	}
+}
+
+.btn-light{
+	@extend .btn-default;
+	background-color: $panel-bg;
+
+	&:focus{
+		background-color: $panel-bg;
+	}
+	&:hover, &:active{
+		background-color: darken($panel-bg, 5%);
+	}
+}
+
+.btn-panel{
+	width: 90%;
+	margin: 0;
+}
+
+.btn-select{
+	text-transform: none;
+	font-weight: normal;
+	font-size: 16px;
+	width: 100%;
+	background-color: $input-bg;
+	padding-right: 30px;
+	text-align: left;
+	position: relative;
+	height: auto;
+	@include text-overflow;
+
+	i{
+		position: absolute;
+		right: 10px;
+		top: 0;
+		bottom: 0;
+		display: inline-block;
+		line-height: $input-height;
+	}
+
+	*{
+		vertical-align: baseline;
+	}
+
+	&:hover, &:focus, &:active{
+		color: $main-text-color;
+	}
+}
+
+.btn-main, .btn-primary{
+	background-color: $active-input-color;
+	&:hover{
+		color: inherit;
+		background-color: $active-input-hover-color;
+	}
+	&:active{
+		color: inherit;
+		background-color: lighten($active-input-hover-color, 10%);
+	}
+}
+
+.btn-alt{
+	background-color: $active-input-alt-color;
+	&:hover{
+		color: inherit;
+		background-color: lighten($active-input-alt-color, 10%);
+	}
+	&:active{
+		color: inherit;
+		background-color: lighten($active-input-alt-color, 15%);
+	}
+}
+
+.btn-addition{
+	background-color: $inactive-input-color;
+	&:hover{
+		background-color: lighten($inactive-input-color, 10%);
+	}
+	&:active{
+		background-color: lighten($inactive-input-color, 15%);
+	}
+
+	&.contrast{
+		color: $contrast-color;
+	}
+}
+
+.btn-icon{
+	padding-left: 12px;
+	padding-right: 12px;
+
+	i{
+		margin: 0;
+	}
+}
+
+.btn-clear{
+	background-color: transparent;
+	padding: 0;
+	line-height: normal;
+	height: auto;
+
+	/*&:hover, &:active{
+		color: $main-text-color;
+	}*/
+
+	&:active{
+		color: $active-input-color;
+	}
+
+	&:hover, &:focus{
+		outline: none;
+		box-shadow: none;
+
+		&:active{
+			outline: none;
+			//color: $main-text-color;
+		}
+	}
+
+	&:focus{
+		//color: $muted-text-color;
+
+		&:hover{
+			//color: $main-text-color;
+		}
+	}
+
+	i, &[class^="icon-"], &[class*=" icon-"]{
+		line-height: inherit;
+	}
+}
+
+.btn-colorpicker{
+	width: 38px;
+	height: 38px;
+	border: 2px solid $border-color;
+	border-radius: 50%;
+
+	&:hover, &:active{
+		border-color: $active-input-color;
+	}
+}
+
+.btn-small{
+	font-size: inherit;
+
+	span{
+		line-height: inherit;
+	}
+}
+
+.btn-datepicker{
+	overflow: hidden;
+
+	input{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
+	}
+}
+
+.btn-circle{
+	@include btn-circle;
+}
+
+.action-btns{
+	border-top: 1px solid $border-color;
+
+	.btn{
+		float: right;
+		margin: 10px;
+	}
+}
+
+.options-field, .properties-field{
+	width: 100%;
+	position: relative;
+	margin: $form-item-margins;
+	font-size: $input-font-size;
+
+	&.w-btn, &.w-2btn{
+		&[m-input]{
+			.btn-colorpicker{
+				top: 10px;
+			}
+		}
+	}
+
+	&.w-btn{
+		padding-right: 30px;
+	}
+
+
+	&.w-2btn{
+		padding-right: 70px;
+	}
+
+	s{
+		display: block;
+		font-size: $label-font-size;
+		color: $muted-text-color;
+	}
+
+	.require{
+		outline: 0;
+		border: 0;
+		width: 1px;
+		height: 1px;
+	}
+
+	button, .btn{
+		position: absolute;
+		right: 0;
+		top: 0;
+		color: $muted-text-color;
+
+		&:hover{
+			color: $main-text-color;
+		}
+
+		&:active{
+			transition: none;
+			color: $active-input-color;
+		}
+	}
+}
+
+.properties-field{
+	font-size: $main-font-size;
+}
+
+.options-field-sublist{
+	padding-left: 30px;
+	margin-left: 10px;
+	margin-top: -10px;
+	border-left: 1px dashed $main-text-color;
+	position: relative;
+
+	&:after{
+		content: '';
+		display: block;
+		width: 5px;
+		height: 20px;
+		background: $page-bg;
+		position: absolute;
+		bottom: 0;
+		left: -3px;
+	}
+
+	.options-field-subitem{
+		position: relative;
+
+		&:before{
+			display: block;
+			content: '';
+			position: absolute;
+			width: 20px;
+			left: -30px;
+			top: 14px;
+			border-bottom: 1px dashed $main-text-color;
+		}
+
+		.add-subitem-btn{
+			text-align: center;
+			width: 70px;
+			line-height: 36px;
+		}
+	}
+}
+
+/*@media (max-width: 767px){
+	.btn-circle-xs{
+		@include btn-circle;
+	}
+
+	.btn-main-xs{
+		margin: 0 !important;
+		position: fixed !important;
+		right: 30px;
+		bottom: 30px;
+		z-index: 4;
+	}
+
+	.btn-main-xs-cont{
+		height: $input-height;
+	}
+}*/
+
+.radio-field, .checkbox-field{
+	position: relative;
+	cursor: pointer;
+
+	input{
+		opacity: 0;
+		position: absolute;
+		left: -16px;
+
+		&:disabled{
+			&+i, &+i+span{
+				opacity: 0.6;
+			}
+		}
+	}
+
+	i{
+		line-height: 1.2em;
+		font-size: 1.2em;
+
+		&+span{
+			vertical-align: top;
+		}
+	}
+}
